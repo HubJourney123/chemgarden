@@ -2,22 +2,51 @@
   "name": "chemgarden",
   "version": "0.1.0",
   "private": true,
+  "description": "A comprehensive web application for managing coaching batches, students, and staff.",
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
+    "dev": "next dev",
+    "build": "prisma generate && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+
+    "db:push": "prisma db push",
+    "db:generate": "prisma generate",
+    "db:seed": "node prisma/seed.js",
+    "db:reset": "node scripts/reset-database.js",
+    "db:studio": "prisma studio",
+    "db:backup": "node scripts/backup-database.js",
+
+    "create:admin": "node scripts/create-admin.js",
+    "report:monthly": "node scripts/monthly-report.js",
+    "test:api": "node scripts/test-api.js",
+
+    "setup": "npm install && prisma generate && prisma db push",
+    "setup:full": "npm run setup && npm run db:seed",
+
+    "clean": "rm -rf .next node_modules",
+    "reinstall": "npm run clean && npm install"
   },
   "dependencies": {
+    "next": "15.4.6",
     "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "next": "15.4.6"
+    "react-dom": "19.1.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@prisma/client": "^6.13.0",
     "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "bcryptjs": "^3.0.2",
+    "cookie": "^1.0.2",
     "eslint": "^9",
     "eslint-config-next": "15.4.6",
-    "@eslint/eslintrc": "^3"
+    "install": "^0.13.0",
+    "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.539.0",
+    "npm": "^11.5.2",
+    "prisma": "^6.13.0",
+    "react-hot-toast": "^2.5.2",
+    "tailwindcss": "^4"
   }
 }
