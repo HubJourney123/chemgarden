@@ -5,9 +5,11 @@
   "description": "A comprehensive web application for managing coaching batches, students, and staff.",
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "prisma generate && prisma db push && next build",
     "start": "next start",
     "lint": "next lint",
+    "postinstall": "prisma generate",
+    "vercel-build": "prisma generate && prisma db push && next build",
 
     "db:push": "prisma db push",
     "db:generate": "prisma generate",
